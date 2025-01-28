@@ -1,11 +1,5 @@
 User-agent: *
-Disallow: /private/
-Disallow: /temp/
-Disallow: /noindex/
-
-# Bloquear rastreadores específicos
-User-agent: BadBot
-Disallow: /
+Allow: /
 
 # Proveer la ubicación del sitemap
 Sitemap: https://dondeseria.cusig.co/sitemap.xml
