@@ -1,0 +1,42 @@
+[
+    {
+      "id": "delulus",
+      "name": "DeLulus Pizza, Pasta & Café",
+      "description": "Cra. 56 #9-23",
+      "lat": 3.407709623989528,
+      "lng": -76.54230379140155,
+      "url": "https://www.dondeseria.com/restaurantes/delulus-pizza-pasta-&-cafe.html"
+    },
+    {
+      "id": "moradaancestral",
+      "name": "Morada Ancestral",
+      "description": "Cl. 15 Nte. #9n-32",
+      "lat": 3.4598738635781845,
+      "lng": -76.53438703151676,
+      "url": "https://moradaancestral.dondeseria.com/"
+    },
+    {
+      "id": "paradallanera",
+      "name": "Parada Llanera",
+      "description": "Cl. 23 #24b30",
+      "lat": 3.4329410019644033,  
+      "lng": -76.52067783337026,
+      "url": "https://www.dondeseria.com/restaurantes/parada-llanera.html"
+    },
+    {
+      "id": "lagranfragatta",
+      "name": "La Gran Fragatta",
+      "description": "Cra. 23c #8-27",
+      "lat": 3.435585157422534,  
+      "lng": -76.53547127403412,
+      "url": "https://lagranfragatta.dondeseria.com/"
+    },
+    {
+      "id": "elparchedelgatos",
+      "name": "El Parche del Gato 2",
+      "description": "Cl. 10 # 31a-10",
+      "lat": 3.4276788578599025, 
+      "lng": -76.53353636038445,
+      "url": "https://www.dondeseria.com/restaurantes/el-parche-del-gato-2.html"
+    }
+  ]  

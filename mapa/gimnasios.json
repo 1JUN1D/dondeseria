@@ -1,0 +1,34 @@
+[
+    {
+      "id": "LeandroGym",
+      "name": "Leandro Gym",
+      "description": "Sede Poblado Campestre",
+      "lat": 3.4169655644150763,
+      "lng": -76.45742373439316,
+      "url": "https://leandrogym.dondeseria.com/sede-poblado-campestre.html"
+    },
+    {
+      "id": "Greccosgym",
+      "name": "Greccos Gym",
+      "description": "Av. 3 Nte. #108",
+      "lat": 3.4767987706662846,
+      "lng": -76.51774292360669,
+      "url": "https://greccosgym.dondeseria.com/"
+    },
+    {
+      "id": "Imperialbox",
+      "name": "Imperial Box",
+      "description": "Av. de las Americas #19N-69",
+      "lat": 3.4599256917187207,
+      "lng": -76.52831660941015,
+      "url": "https://imperialbox.dondeseria.com/"
+    },
+    {
+      "id": "muellegym",
+      "name": "Muelle Gym",
+      "description": "Cra 2 #44N-108 B/Popular",
+      "lat": 3.4716090236350974,
+      "lng": -76.50988232720863,
+      "url": "https://muellegym.dondeseria.com/"
+    }
+  ]

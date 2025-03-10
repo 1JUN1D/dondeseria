@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="UTF-8">
+  <title>Mapa</title>
+  <meta name="description" content="Descubre los sitios cerca de tu ubicación">
+  <link rel="icon" href="../images/logo-donde-seria.ico">
+  <!-- Meta Pixel Code -->
+  <script>
+    !function(f,b,e,v,n,t,s)
+    {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+    n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+    if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+    n.queue=[];t=b.createElement(e);t.async=!0;
+    t.src=v;s=b.getElementsByTagName(e)[0];
+    s.parentNode.insertBefore(t,s)}(window, document,'script',
+    'https://connect.facebook.net/en_US/fbevents.js');
+    fbq('init', '494994223683472');
+    fbq('track', 'PageView');
+  </script>
+  <noscript>
+    <img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=494994223683472&ev=PageView&noscript=1" />
+  </noscript>
+  <!-- End Meta Pixel Code -->
+
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-0CQ9QQ14QN"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-0CQ9QQ14QN');
+  </script>
+  <!-- GOOGLE FONTS -->
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@200;300;400;600;700;900&display=swap" rel="stylesheet">
+  <!-- OWL CAROUSEL CSS -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css" integrity="sha512-tS3S5qG0BlhnQROyJXvNjeEM4UpMXHrQfTGmbQ1gKmelCxlSEBUaxhRBj/EFTzpbP4RVSrpEikbmdJobCvhE3g==" crossorigin="anonymous" />
+  <!-- BOX ICONS -->
+  <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
+  <!-- APP CSS -->
+  <link rel="stylesheet" href="../grid.css">
+  <link rel="stylesheet" href="../360.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@photo-sphere-viewer/core/index.min.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@photo-sphere-viewer/virtual-tour-plugin/index.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@photo-sphere-viewer/markers-plugin/index.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@photo-sphere-viewer/gallery-plugin/index.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@photo-sphere-viewer/plan-plugin/index.css" />
+  <link rel="stylesheet" href="../restaurantes/styles.css">
+  <!-- Leaflet CSS para el plugin de mapa -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+  <!-- Custom CSS para la galería de blogs -->
+</head>
+
+<body>
+
+  <!-- NAV -->
+  <div class="nav-wrapper" style="z-index: 1000000;">
+    <div class="container">
+      <div class="nav">
+        <a href="../index.html" class="logo">
+          <i class='bx bx-webcam bx-tada main-color'></i>DÓNDE<span class="main-color"> SERÍA</span>
+        </a>
+        <ul class="nav-menu" id="nav-menu">
+          <li><a href="../index.html">Inicio</a></li>
+          <li><a href="../mapa/index.html">Mapa</a></li>
+          <li><a href="../index.html">Restaurantes</a></li>
+          <li><a href="../index.html">Gyms</a></li>
+          <li><a href="../blogs/index.html">Blogs</a></li>
+          <li><a href="../index.html">Contacto</a></li>
+        </ul>
+        <!-- MOBILE MENU TOGGLE -->
+        <div class="hamburger-menu" id="hamburger-menu">
+          <div class="hamburger"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- END NAV -->
+
+  <!-- MAPA -->
+  <!-- Se envuelve el mapa en un contenedor relativo para posicionar los botones -->
+  <div id="map-container" style="position: relative; width: 82vw; height: 90vh; margin: 25px auto;">
+    <div id="map" style="width: 100%; height: 100%;"></div>
+    <!-- Contenedor de botones, ubicado arriba a la derecha -->
+    <div id="map-buttons" style="position: absolute; top: 10px; right: 10px; display: flex; flex-direction: column; gap: 10px; z-index: 1000;">
+      <!-- Botón activo inicial para ver gimnasios -->
+      <button id="btn-gym" style="padding: 10px; background: #007bff; color: #fff; border: none; border-radius: 5px; cursor: pointer;">Ver gimnasios</button>
+      <button id="btn-rest" style="padding: 10px; background: #fff; color: #007bff; border: 2px solid #007bff; border-radius: 5px; cursor: pointer;">Ver restaurantes</button>
+    </div>
+  </div>
+  <!-- FIN DEL MAPA-->
+
+  <!-- FOOTER SECTION -->
+  <footer class="section" style="margin: 0">
+    <div class="container">
+      <div class="row">
+        <div class="col-4 col-md-6 col-sm-12">
+          <div class="content">
+            <a href="#" class="logo">
+              <i class='bx bx-webcam bx-tada main-color'></i>DÓNDE<span class="main-color"> SERÍA</span>
+            </a>
+            <p>
+              Nos especializamos en capturar experiencias únicas con recorridos 360° en restaurantes, gimnasios, bares y más. Nuestro objetivo es promocionar locales y negocios para que lleguen a más personas, mostrando su esencia de una manera inmersiva y atractiva. ¡Explora, conoce y vive lo mejor de cada lugar con nosotros! 🌍✨
+            </p>
+            <div class="social-list">
+              <a href="https://www.instagram.com/cusig.co/" class="social-item">
+                <i class="bx bxl-instagram"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+  <!-- END FOOTER SECTION -->
+
+  <!-- COPYRIGHT SECTION -->
+  <div class="copyright">
+    Copyright 2025 <a href="https://www.youtube.com/channel/UCnNgtK4tGlWcceXVzoyTg8Q" target="_blank">CUSIG S A S</a>
+  </div>
+
+  <!-- jQuery (requerido para Owl Carousel) -->
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <!-- Owl Carousel JS sin integrity -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
+  <!-- Agrega el script de Leaflet JS -->
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <script>
+    // Inicializa el mapa centrado en Cali
+    var map = L.map('map').setView([3.4516, -76.5320], 13);
+
+    // Capa base de Stadia Alidade Smooth Dark (o la que prefieras)
+    var Stadia_AlidadeSmoothDark = L.tileLayer('https://tiles.stadiamaps.com/tiles/alidade_smooth_dark/{z}/{x}/{y}{r}.{ext}', {
+      minZoom: 0,
+      maxZoom: 20,
+      attribution: '&copy; <a href="https://www.stadiamaps.com/" target="_blank">Stadia Maps</a> &copy; <a href="https://openmaptiles.org/" target="_blank">OpenMapTiles</a> &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
+      ext: 'png'
+    });
+    Stadia_AlidadeSmoothDark.addTo(map);
+
+    // Se crea un grupo de capas para los marcadores, de modo que se puedan limpiar fácilmente
+    var markersLayer = L.layerGroup().addTo(map);
+
+    // Solicita la ubicación del usuario y actualiza la vista del mapa
+    map.locate({ setView: true, maxZoom: 16 });
+    map.on('locationfound', function(e) {
+      var radius = e.accuracy / 2;
+      L.marker(e.latlng).addTo(map)
+        .bindPopup("Estás aquí").openPopup();
+      L.circle(e.latlng, radius).addTo(map);
+    });
+    map.on('locationerror', function(e) {
+      alert(e.message);
+    });
+
+    // Función para cargar marcadores desde el JSON especificado y agregarlos al grupo markersLayer
+    function loadMarkers(jsonFile) {
+      // Limpiar marcadores existentes
+      markersLayer.clearLayers();
+
+      fetch(jsonFile)
+        .then(response => response.json())
+        .then(data => {
+          data.forEach(function(marker) {
+            // Selecciona la imagen según el id y el archivo JSON cargado
+            var iconUrl = '';
+            if (jsonFile === 'gimnasios.json') {
+              switch (marker.id) {
+                case "LeandroGym":
+                  iconUrl = '../mapa/imagenes/logo-leandrogym2.png';
+                  break;
+                case "Greccosgym":
+                  iconUrl = '../mapa/imagenes/greccos-logo-gym.png';
+                  break;
+                case "Imperialbox":
+                  iconUrl = '../mapa/imagenes/logo-imperial-box.png';
+                  break;
+                case "muellegym":
+                  iconUrl = '../mapa/imagenes/muelle-gym-logo.png';
+                  break;
+                default:
+                  iconUrl = '../mapa/imagenes/default.png';
+              }
+            } else if (jsonFile === 'restaurantes.json') {
+              switch (marker.id) {
+                case "delulus":
+                  iconUrl = '../mapa/imagenes/logo-delulus-pizza-ásta-cafe2.png';
+                  break;
+                case "moradaancestral":
+                  iconUrl = '../mapa/imagenes/logo-morada-ancestral2.png';
+                  break;
+                case "paradallanera":
+                  iconUrl = '../mapa/imagenes/logo-parada-llanera-cali.png';
+                  break;
+                case "lagranfragatta":
+                  iconUrl = '../mapa/imagenes/la-gran-fragatta-logo.png';
+                  break;
+                case "elparchedelgatos":
+                  iconUrl = '../mapa/imagenes/logo-parche-del-gato.png';
+                  break;
+                default:
+                  iconUrl = '../mapa/imagenes/default.png';
+              }
+            }
+
+            // Crea un marcador con un fondo circular sombreado y la imagen personalizada
+            var customIcon = L.divIcon({
+              html: `<div style="width: 35px; height: 35px; background: #f0f0f0; border-radius: 50%; display: flex; align-items: center; justify-content: center; box-shadow: 0px 4px 6px rgba(0,0,0,0.3);">
+                       <img src="${iconUrl}" style="width: 30px; height: 30px;">
+                     </div>`,
+              iconSize: [32, 32],
+              iconAnchor: [16, 32],
+              popupAnchor: [0, -32],
+              className: '' // Remueve clases por defecto si se desea
+            });
+
+            // Agrega el marcador al grupo markersLayer
+            var m = L.marker([marker.lat, marker.lng], { icon: customIcon }).addTo(markersLayer);
+            // Popup con título centrado, descripción y botón de ancho completo
+            m.bindPopup(
+              `<div style="text-align: center;">
+                 <b>${marker.name}</b><br>
+                 ${marker.description}<br>
+                 <a href="${marker.url}" target="_blank" style="display: block; width: 100%; margin-top: 5px; padding: 5px 0; background: #007bff; color: #fff; text-decoration: none; border-radius: 3px;">Ir al sitio</a>
+               </div>`
+            );
+          });
+        })
+        .catch(error => console.error("Error al cargar los marcadores:", error));
+    }
+
+    // Al cargar la página se muestran los gimnasios por defecto
+    loadMarkers('gimnasios.json');
+
+    // Funciones para cambiar entre JSON de gimnasios y restaurantes y actualizar estilos de botón
+    document.getElementById('btn-gym').addEventListener('click', function() {
+      loadMarkers('gimnasios.json');
+      // Actualiza estilo del botón activo
+      this.style.background = "#007bff";
+      this.style.color = "#fff";
+      document.getElementById('btn-rest').style.background = "#fff";
+      document.getElementById('btn-rest').style.color = "#007bff";
+    });
+
+    document.getElementById('btn-rest').addEventListener('click', function() {
+      loadMarkers('restaurantes.json');
+      // Actualiza estilo del botón activo
+      this.style.background = "#007bff";
+      this.style.color = "#fff";
+      document.getElementById('btn-gym').style.background = "#fff";
+      document.getElementById('btn-gym').style.color = "#007bff";
+    });
+  </script>
+
+</body>
+
+</html>
