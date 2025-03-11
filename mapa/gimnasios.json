@@ -31,4 +31,13 @@
       "lng": -76.50988232720863,
       "url": "https://muellegym.dondeseria.com/"
     }
+    ,
+    {
+      "id": "taurosgym",
+      "name": "Tauros Gym",
+      "description": "Sede Autopista Sur",
+      "lat": 3.436614626279929, 
+      "lng": -76.51525204372254,
+      "url": "https://taurosgym.dondeseria.com/"
+    }
   ]
