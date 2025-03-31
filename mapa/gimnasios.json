@@ -8,6 +8,14 @@
       "url": "https://leandrogym.dondeseria.com/sede-poblado-campestre.html"
     },
     {
+      "id": "LeandroGym",
+      "name": "Leandro Gym",
+      "description": "Sede Nueva Floresta",
+      "lat": 3.432335512341686,
+      "lng": -76.50037162883524,
+      "url": "https://leandrogym.dondeseria.com/sede-nueva-floresta.html"
+    },
+    {
       "id": "Greccosgym",
       "name": "Greccos Gym",
       "description": "Av. 3 Nte. #108",
@@ -38,6 +46,167 @@
       "description": "Sede Autopista Sur",
       "lat": 3.436614626279929, 
       "lng": -76.51525204372254,
-      "url": "https://taurosgym.dondeseria.com/"
+      "url": "https://taurosgym.dondeseria.com/sede-autopista-sur.html"
+    },
+    {
+      "id": "taurosgym",
+      "name": "Tauros Gym",
+      "description": "Sede Aries",
+      "lat": 3.422494564735847, 
+      "lng": -76.49203255928099,
+      "url": "https://taurosgym.dondeseria.com/sede-aries.html"
+    },
+    {
+      "id": "taurosgym",
+      "name": "Tauros Gym",
+      "description": "Sede Yira Castro",
+      "lat": 3.4264191969468194, 
+      "lng": -76.49657253906575,
+      "url": "https://taurosgym.dondeseria.com/sede-yira-castro.html"
     }
+,
+    {
+      "id": "taurosgym",
+      "name": "Tauros Gym",
+      "description": "Sede Poblado Campestre",
+      "lat": 3.4105414988209892, 
+      "lng": -76.45804154467884,
+      "url": "https://taurosgym.dondeseria.com/sede-poblado-campestre.html"
+    },
+    {
+      "id": "MegafitnessGym",
+      "name": "MegaFitness Gym",
+      "description": "Sede El Diamante",
+      "lat": 3.42092101497991,
+      "lng": -76.50207196925342,
+      "url": "https://megafitnessgym.dondeseria.com/sede-el-diamante.html"
+    },
+    {
+      "id": "MegafitnessGym",
+      "name": "MegaFitness Gym",
+      "description": "Sede Bonilla Aragon",
+      "lat": 3.4236565711636864,
+      "lng": -76.4846660522568,
+      "url": "https://megafitnessgym.dondeseria.com/sede-bonilla-aragon.html"
+    },
+    {
+      "id": "MegafitnessGym",
+      "name": "MegaFitness Gym",
+      "description": "Sede Poblado 1",
+      "lat": 3.419047633682711,
+      "lng": -76.49742899963495,
+      "url": "https://megafitnessgym.dondeseria.com/sede-poblado-1.html"
+    },
+    {
+      "id": "thanosgym",
+      "name": "Thanos Gym",
+      "description": "Cl. 72 #1 h 10",
+      "lat": 3.4752875459247843,
+      "lng": -76.4847842093621,
+      "url": "https://thanosgym.dondeseria.com/"
+    },
+    {
+      "id": "elmolinocaf",
+      "name": "El Molino CAF",
+      "description": "Cl. 18 #101B-39",
+      "lat": 3.3641437653894566,
+      "lng": -76.52898809256929,
+      "url": "https://elmolinocaf.dondeseria.com/"
+    },
+    {
+      "id": "worldfitness",
+      "name": "Club Deportivo World Fitness",
+      "description": "Cl. 25 #84-06",
+      "lat": 3.3833460657691687,
+      "lng": -76.5254168129805,
+      "url": "https://clubdeportivoworldfitness.dondeseria.com/"
+    },
+    {
+      "id": "hitgym",
+      "name": "Hit GYM",
+      "description": "Cra 48a #54-13",
+      "lat": 3.396176082519973,
+      "lng": -76.51030652631114,
+      "url": "https://hitgym.dondeseria.com/"
+    },
+    {
+      "id": "forcegym",
+      "name": "Force GYM",
+      "description": "Cra. 43b #40-06",
+      "lat": 3.408766661611298,
+      "lng": -76.51466879253863,
+      "url": "https://forcegym.dondeseria.com/"
+    },
+    {
+      "id": "bfitness",
+      "name": "B-Fitness",
+      "description": "Cl. 44 #1e - 65",
+      "lat": 3.467401161653909,
+      "lng": -76.50866634474245,
+      "url": "https://bfitness.dondeseria.com/"
+    },
+    {
+      "id": "romagym",
+      "name": "Roma Gym",
+      "description": "# a 71a-227, Dg. 15 #711",
+      "lat": 3.4458011564578217,
+      "lng": -76.48635026643133,
+      "url": "https://romagym.dondeseria.com/"
+    },
+    {
+      "id": "fitnesszone",
+      "name": "Fitness Zone",
+      "description": "Cl. 13 #65b-26",
+      "lat": 3.399446311311982,
+      "lng": -76.53752906127612,
+      "url": "https://fitnesszone.dondeseria.com/"
+    },
+    {
+      "id": "gladiadorcaf",
+      "name": "Gladiador CAF",
+      "description": "Cl. 13 #65b-26",
+      "lat": 3.4138335430832694,
+      "lng": -76.5135579933409,
+      "url": "https://gladiadorcaf.dondeseria.com/"
+    },
+    {
+      "id": "gofit",
+      "name": "Go Fit",
+      "description": "Cl. 13b #83-48",
+      "lat": 3.38362110631098,
+      "lng": -76.53510049849415,
+      "url": "https://gofitcaf.dondeseria.com/"
+    },
+    {
+      "id": "hypertrophylab",
+      "name": "Hypertrophy Lab",
+      "description": "Cl. 16 #84A - 11 2 PISO",
+      "lat": 3.3829056376229123,
+      "lng": -76.52855386448572,
+      "url": "https://hypertrophylab.dondeseria.com/"
+    },
+    {
+      "id": "mfcgym",
+      "name": "M.F.C Gym",
+      "description": "Cl. 13 #66a-30",
+      "lat": 3.3973689702978898,
+      "lng": -76.53817180672613,
+      "url": "https://mfcgym.dondeseria.com/"
+    },
+    {
+      "id": "nextlevel",
+      "name": "Next Level Gym",
+      "description": "Cl. 10a #73-04",
+      "lat": 3.3916259175818637,
+      "lng": -76.54207886627445,
+      "url": "https://nextlevelgym.dondeseria.com/"
+    },
+    {
+      "id": "powerhouse",
+      "name": "Power House",
+      "description": "Sede Cañaveralejo",
+      "lat": 3.4035397724854275,
+      "lng": -76.54432095105973,
+      "url": "https://powerhouse.dondeseria.com/"
+    }           
   ]
