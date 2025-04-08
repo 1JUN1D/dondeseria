@@ -102,9 +102,7 @@
             justify-content: center;
             flex: 1;
         }
-        body > div.container-fluid > div.right-container > div.instagram-container{
-          height: 90vh !important; 
-        }
+
         .card {
             width: 95%;
             max-width: 250px;
@@ -173,7 +171,7 @@
             }
             
             .top-cards {
-                flex-direction: column;
+                flex-direction: row;
                 align-items: center;
             }
             
@@ -181,11 +179,19 @@
                 margin-bottom: 10px;
                 width: 100%;
             }
+
+            .card-link {
+    text-decoration: none;
+    color: inherit;
+    display: inline-block;
+    width: 30%;
+    height: 100%;
+}
         }
         
         @media (max-width: 768px) {
             .top-cards {
-                flex-direction: column;
+                flex-direction: row;
                 align-items: center;
             }
             
@@ -193,6 +199,42 @@
                 width: 100%;
                 margin-bottom: 10px;
             }
+
+            .card-link {
+    text-decoration: none;
+    color: inherit;
+    display: inline-block;
+    width: 30%;
+    height: 100%;
+}
+.card img {
+            height: 160px;
+            object-fit: cover;
+        }
+        
+        .card-body {
+            padding: 5px;
+            justify-content: center;
+        }
+        
+        .card-title {
+            font-size: 0.85rem;
+            margin-bottom: 3px;
+            align-items: center;
+
+        }
+        
+        .card-text {
+            font-size: 0.75rem;
+            margin-bottom: 3px;
+            align-items: center;
+
+        }
+        
+        .btn {
+            padding: 0.15rem 0.3rem;
+            font-size: 0.65rem;
+        }
         }
     </style>
 </head>
@@ -253,7 +295,7 @@
         <div class="right-container">
             <!-- Título de la sección derecha -->
             <div class="section-title">
-                Nuestro Último Reel
+                Reel del Sorteo
             </div>
             
             <!-- Instagram Embed con contenedor más pequeño -->
