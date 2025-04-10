@@ -446,6 +446,40 @@
       navMenu.classList.toggle("active");
     });
   </script>
+
+  <!-- CONVERSION API (desde el frontend, solo para pruebas) -->
+  <script>
+    (function() {
+      const PIXEL_ID = '1728044967775117';
+      const ACCESS_TOKEN = 'EAA3RCF5sbDIBO63MvWEfVl1jryjGYmFM5zZBdvxBG1jRhwmtgMWS3py5hPvkt3fEvZCnjW22MYozvj8UOQnzxcoLq2jbOpRZBwom5lEYRgE6n0ZCKhZCLcczEvfupID4TRGLCdNhRwRZC1qiKmO5jNBmk94Iiujkl5ofK0SdyitE0ZBD9y3bY4ECuucqOdlNv5sEgZDZD';
+      const API_VERSION = 'v16.0';
+
+      // Evento de prueba: ViewContent
+      // Se envía desde el navegador, exponiendo token (NO RECOMENDADO en producción)
+      fetch(`https://graph.facebook.com/${API_VERSION}/${PIXEL_ID}/events?access_token=${ACCESS_TOKEN}`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          data: [
+            {
+              event_name: "ViewContent",
+              event_time: Math.floor(Date.now() / 1000),
+              user_data: {
+                // Para demostración, se envían IP y user agent directamente (sin hashing)
+                client_ip_address: "", 
+                client_user_agent: navigator.userAgent
+              },
+              action_source: "website",
+              event_source_url: "https://www.dondeseria.com/blogs/5-datos-sorprendentes-sobre-los-gimnasios-de-lujo-en-cali.html"
+            }
+          ]
+        })
+      })
+      .then(response => response.json())
+      .then(data => console.log("Respuesta API Conversiones:", data))
+      .catch(error => console.error("Error API Conversiones:", error));
+    })();
+  </script>
 </body>
 
 </html>
