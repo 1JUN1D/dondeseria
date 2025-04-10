@@ -89,7 +89,15 @@
 </head>
 
 <body>
-
+    <div id="flyer-overlay">
+        <div class="flyer-content" onclick="redirectToPromo()">
+          <!-- Botón de cierre -->
+          <button class="close-flyer" onclick="closeFlyer(); event.stopPropagation()">×</button>
+          <!-- Aquí incluye tu flyer. Puedes usar una imagen o el contenido que desees -->
+          <img src="./flyer.jpeg" alt="Flyer Promocional" style="width: 100%; display: block;">
+        </div>
+      </div>
+      
     <!-- NAV -->
     <div class="nav-wrapper">
         <div class="container">
@@ -120,6 +128,51 @@
         <!-- HERO SLIDE -->
         <div class="hero-slide">
             <div class="owl-carousel carousel-nav-center" id="hero-carousel">
+
+
+                <!-- SORTEO -->
+                <!-- SORTEO -->
+                <!-- SORTEO -->
+                <!-- SORTEO -->
+                <!-- SORTEO -->
+
+                <div class="hero-slide-item">
+                    <img src="./images/banner_sorteo.jpg" alt="Sorteo de Kit de sumplementos">
+                    <div class="overlay"></div>
+                    <div class="hero-slide-item-content">
+                        <div class="item-content-wraper">
+                            <div class="item-content-title top-down">
+                                SORTEO COMBO SUPLEMENTOS
+                            </div>
+                            <div class="movie-infos top-down delay-2">
+                                <div class="movie-info">
+                                    <i class="bx bxs-star"></i>
+                                    <span>CREATINA, PROTEINA, PRE ENTRENO</span>
+                                </div>
+                                <div class="movie-info">
+                                    <span>HASTA EL 27 DE ABRIL</span>
+                                </div>
+                            </div>
+                            <div class="item-content-description top-down delay-4">
+                                ¡Explora nuestros recorridos virtuales y encuentra la  mancuerna dorada! Participa buscandola en uno de los 3 tours de nuestros gimnasios y participa para ganar.
+                            </div>
+                            <div class="item-action top-down delay-6">
+                                <a id="randomSorteo" href="https://dondeseria.dondeseria.com/sorteo/" class="btn btn-hover">
+                                    <i class="bx bxs-right-arrow"></i>
+                                    <span>PARTICIPAR</span>
+                                </a>
+                                
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- SORTEO -->
+                <!-- SORTEO -->
+                <!-- SORTEO -->
+                <!-- SORTEO -->
+                <!-- SORTEO -->
+
                 <!-- SLIDE ITEM -->
                 <div class="hero-slide-item">
                     <img src="./images/leandrogym_banner.jpg" alt="Recorrido virtual 360 de LeandroGYM en Cali">
@@ -1557,7 +1610,85 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js" integrity="sha512-bPs7Ae6pVvhOSiIcyUClR7/q2OAsRiovw4vAkX+zJbw3ShAeeqezq50RIIcIURq7Oa20rW2n2q+fyXBNcU9lrw==" crossorigin="anonymous"></script>
     <!-- APP SCRIPT -->
     <script src="app.js"></script>
+    <script>
+        // Esperar a que el DOM se cargue por completo
+        document.addEventListener("DOMContentLoaded", function() {
+            // Obtener el enlace por su ID
+            var randomLink = document.getElementById("randomSorteo");
+    
+            // Definir el arreglo de archivos (cada uno tiene 10% de probabilidad)
+            var templates = [
+                "template_qr29.html",
+                "page_uf98.html",
+                "layout_kd17.html",
+                "view_jx56.html",
+                "screen_pq82.html",
+                "module_rt45.html",
+                "site_mz63.html",
+                "web_yl90.html",
+                "design_bn77.html",
+                "acho_p4p1.html"
+            ];
+    
+            // Asignar el evento de clic al enlace
+            randomLink.addEventListener("click", function(event) {
+                // Prevenir la acción de redirección por defecto
+                event.preventDefault();
+    
+                // Generar un índice aleatorio entre 0 y 9
+                var indiceAleatorio = Math.floor(Math.random() * templates.length);
+                // Seleccionar el template correspondiente
+                var templateSeleccionado = templates[indiceAleatorio];
+    
+                // Redirigir a la URL combinada (ajusta la ruta base según necesites)
+                window.location.href = "https://www.dondeseria.com/sorteo/" + templateSeleccionado;
+            });
+        });
+    </script>
 
+<script>
+    // Función para cerrar el overlay manualmente
+    function closeFlyer() {
+      const overlay = document.getElementById('flyer-overlay');
+      if (overlay) {
+        overlay.style.display = 'none';
+      }
+    }
+  
+    // Función para redirigir a una URL de sorteo aleatoria cuando se clickea el contenedor
+    function redirectToPromo() {
+      // Arreglo con los nombres de los templates (cada uno tiene 10% de probabilidad)
+      var templates = [
+        "template_qr29.html",
+        "page_uf98.html",
+        "layout_kd17.html",
+        "view_jx56.html",
+        "screen_pq82.html",
+        "module_rt45.html",
+        "site_mz63.html",
+        "web_yl90.html",
+        "design_bn77.html",
+        "acho_p4p1.html"
+      ];
+  
+      // Generar un índice aleatorio entre 0 y 9
+      var indiceAleatorio = Math.floor(Math.random() * templates.length);
+      // Obtener el template seleccionado
+      var templateSeleccionado = templates[indiceAleatorio];
+  
+      // Redirigir a la URL combinando la base con el template aleatorio
+      window.location.href = "https://www.dondeseria.com/sorteo/" + templateSeleccionado;
+    }
+  
+    // Cierra el flyer automáticamente después de 3 segundos (3000 milisegundos)
+    window.addEventListener('load', function() {
+      setTimeout(closeFlyer, 3000);
+    });
+  </script>
+  
+  
+  
+    
 </body>
 
 </html>
