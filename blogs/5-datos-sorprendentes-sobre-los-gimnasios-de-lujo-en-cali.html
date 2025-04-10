@@ -433,6 +433,9 @@
 
   <!-- SCRIPTS -->
   <script>
+    // ---------------------------
+    // Animación de entrada
+    // ---------------------------
     window.addEventListener("load", () => {
       setTimeout(() => {
         document.querySelector(".bars-box").style.display = "none";
@@ -445,39 +448,73 @@
     menuIcon.addEventListener("click", () => {
       navMenu.classList.toggle("active");
     });
-  </script>
 
-  <!-- CONVERSION API (desde el frontend, solo para pruebas) -->
-  <script>
-    (function() {
+
+    // ---------------------------
+    // Función para hashear datos con SHA-256 en el navegador
+    // ---------------------------
+    async function toSHA256(original) {
+      // Normalizamos (minúsculas, sin espacios)
+      const texto = original.trim().toLowerCase();
+      const msgBuffer = new TextEncoder().encode(texto);
+      const hashBuffer = await crypto.subtle.digest('SHA-256', msgBuffer);
+      const hashArray = Array.from(new Uint8Array(hashBuffer));
+      return hashArray.map(b => b.toString(16).padStart(2, '0')).join('');
+    }
+
+    // ---------------------------
+    // Ejemplo de envío de la API de conversiones
+    // ---------------------------
+    (async function sendConversionAPI() {
       const PIXEL_ID = '1728044967775117';
       const ACCESS_TOKEN = 'EAA3RCF5sbDIBO63MvWEfVl1jryjGYmFM5zZBdvxBG1jRhwmtgMWS3py5hPvkt3fEvZCnjW22MYozvj8UOQnzxcoLq2jbOpRZBwom5lEYRgE6n0ZCKhZCLcczEvfupID4TRGLCdNhRwRZC1qiKmO5jNBmk94Iiujkl5ofK0SdyitE0ZBD9y3bY4ECuucqOdlNv5sEgZDZD';
       const API_VERSION = 'v16.0';
 
-      // Evento de prueba: ViewContent
-      // Se envía desde el navegador, exponiendo token (NO RECOMENDADO en producción)
-      fetch(`https://graph.facebook.com/${API_VERSION}/${PIXEL_ID}/events?access_token=${ACCESS_TOKEN}`, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          data: [
-            {
-              event_name: "ViewContent",
-              event_time: Math.floor(Date.now() / 1000),
-              user_data: {
-                // Para demostración, se envían IP y user agent directamente (sin hashing)
-                client_ip_address: "", 
-                client_user_agent: navigator.userAgent
-              },
-              action_source: "website",
-              event_source_url: "https://www.dondeseria.com/blogs/5-datos-sorprendentes-sobre-los-gimnasios-de-lujo-en-cali.html"
-            }
-          ]
-        })
-      })
-      .then(response => response.json())
-      .then(data => console.log("Respuesta API Conversiones:", data))
-      .catch(error => console.error("Error API Conversiones:", error));
+      // Datos de ejemplo (estos se hashean localmente)
+      const rawEmail = "carolina@example.com";
+      const rawFirstName = "Carolina";
+      const rawGender = "f";  // 'f' o 'm'
+      const rawCity = "Cali";
+
+      // Hasheamos
+      const em = await toSHA256(rawEmail);      // email
+      const fn = await toSHA256(rawFirstName);  // nombre
+      const ge = await toSHA256(rawGender);     // sexo
+      const ct = await toSHA256(rawCity);       // ciudad
+
+      // Creamos la carga a enviar
+      const payload = {
+        data: [
+          {
+            event_name: "ViewContent",
+            event_time: Math.floor(Date.now() / 1000),
+            user_data: {
+              em: [em],
+              fn: [fn],
+              ge: [ge],
+              ct: [ct],
+              // IP y User Agent
+              client_ip_address: "", 
+              client_user_agent: navigator.userAgent
+            },
+            action_source: "website",
+            event_source_url: "https://www.dondeseria.com/blogs/5-datos-sorprendentes-sobre-los-gimnasios-de-lujo-en-cali.html"
+          }
+        ]
+      };
+
+      try {
+        const response = await fetch(`https://graph.facebook.com/${API_VERSION}/${PIXEL_ID}/events?access_token=${ACCESS_TOKEN}`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(payload)
+        });
+
+        const result = await response.json();
+        console.log("Respuesta de la API de conversiones:", result);
+      } catch (error) {
+        console.error("Error en la llamada a la API de conversiones:", error);
+      }
     })();
   </script>
 </body>
