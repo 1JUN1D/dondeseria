@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="shortcut icon" type="image/x-icon" href="../blogs/images/logo.png" />
+  <title>Los 5 gimnasios más tecnológicos de Cali</title>
+  <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet" />
+  <style>
+    /* ================= RESET Y BASE ================= */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: "Poppins", sans-serif;
+    }
+
+    body {
+      font-size: 16px;
+      background-color: #000;
+      color: #fff;
+      overflow-x: hidden;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    /* ================= HEADER ================= */
+    header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      padding: 2rem 9%;
+      background: #000;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      z-index: 1000;
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 1s ease, visibility 1s ease;
+    }
+
+    header.active {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .logo {
+      font-size: 2rem;
+      font-weight: 700;
+      color: #ff3c3c;
+    }
+
+    nav a {
+      font-size: 1.6rem;
+      font-weight: 500;
+      margin-left: 3rem;
+      color: #fff;
+      transition: 0.3s;
+    }
+
+    nav a:hover,
+    nav a.active {
+      color: #ff3c3c;
+    }
+
+    #menu-icon {
+      font-size: 3rem;
+      display: none;
+      cursor: pointer;
+    }
+
+    /* ================= ANIMACIÓN DE ENTRADA ================= */
+    .bars-box {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: #000;
+      z-index: 9999;
+      display: flex;
+    }
+
+    .imagen-principal {
+      width: 100%;
+      height: auto;
+      display: block;
+      margin: 2rem auto;
+      max-width: 900px; /* Opcional: para que no se estire demasiado en pantallas grandes */
+    }
+
+    .bar {
+      flex: 1;
+      background: #000;
+      animation: hide-bars 0.5s ease-in-out forwards;
+      animation-delay: calc(0.1s * var(--i));
+    }
+
+    @keyframes hide-bars {
+      to {
+        transform: translateY(-100%);
+      }
+    }
+
+    /* ================= SECCIONES ================= */
+    section {
+      position: relative;
+      width: 100%;
+      padding: 10rem 9% 4rem;
+    }
+
+    .heading {
+      text-align: center;
+      margin-bottom: 3rem;
+      font-size: 3rem;
+      color: #ff3c3c;
+    }
+
+    /* ================= INDICE ================= */
+    .indice h2 {
+      color: #ff3c3c;
+      margin-bottom: 1rem;
+      font-size: 2rem;
+    }
+
+    .indice ul {
+      list-style: none;
+    }
+
+    .indice ul li {
+      margin: 0.5rem 0;
+    }
+
+    .indice ul li a {
+      color: #fff;
+      text-decoration: underline;
+      font-weight: 600;
+    }
+
+    /* ================= CARDS ================= */
+    .card-peligro {
+      background-color: #1e1e1e;
+      padding: 2rem;
+      margin: 3rem 0;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.4);
+      position: relative;
+    }
+
+    .card-peligro img {
+      max-width: 100%;
+      height: auto;
+      display: block;
+      margin: 1rem 0;
+    }
+
+    .numero-circulo {
+      position: absolute;
+      top: -20px;
+      left: -20px;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background-color: #ff3c3c;
+      color: #fff;
+      font-weight: bold;
+      font-size: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 0 10px rgba(0,0,0,0.6);
+    }
+
+    .boton-contacto {
+      background-color: #ff3c3c;
+      color: #fff;
+      font-size: 1.6rem;
+      font-weight: bold;
+      padding: 1rem 2rem;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+      text-decoration: none;
+      display: inline-block;
+      margin-top: 1rem;
+    }
+
+    .boton-contacto:hover {
+      background-color: #ff5c5c;
+    }
+
+    /* ================= MEDIA QUERIES ================= */
+    @media screen and (max-width: 768px) {
+      #menu-icon {
+        display: block;
+      }
+
+      nav {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        padding: 1rem 0;
+        background: #000;
+        display: none;
+        text-align: center;
+      }
+
+      nav.active {
+        display: block;
+      }
+
+      nav a {
+        display: block;
+        margin: 2rem 0;
+      }
+    }
+
+    @media screen and (max-width: 450px) {
+      .heading {
+        font-size: 2rem;
+      }
+
+      .boton-contacto {
+        font-size: 1.4rem;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <!-- HEADER -->
+  <header>
+    <a href="https://www.dondeseria.com/" class="logo">DÓNDE SERÍA</a>
+    <i class="bx bx-menu" id="menu-icon"></i>
+    <nav>
+      <a href="https://www.dondeseria.com/">Inicio</a>
+      <a href="#indice" class="active">Índice</a>
+      <a href="#recomendacion">Todos los Gym</a>
+    </nav>
+  </header>
+
+  <!-- ANIMACIÓN -->
+  <div class="bars-box">
+    <div class="bar" style="--i:6;"></div>
+    <div class="bar" style="--i:5;"></div>
+    <div class="bar" style="--i:4;"></div>
+    <div class="bar" style="--i:3;"></div>
+    <div class="bar" style="--i:2;"></div>
+    <div class="bar" style="--i:1;"></div>
+  </div>
+
+    <!-- CONTENIDO PRINCIPAL -->
+    <section class="services">
+      <h1 class="heading">
+        Lo que nadie te cuenta: 5 Datos sorprendentes sobre los Gimnasios de Lujo en Cali y el Verdadero Motivo de sus Precios
+      </h1>
+
+      <img src="../blogs/images/inicial.png" alt="Gimnasios tecnológicos en Cali" class="imagen-principal" />
+      <br><br><br>
+
+      <div class="blog-post">
+
+        <!-- TEXTO INTERMEDIO -->
+        <p style="font-size: 1.6rem; line-height: 1.6; margin-bottom: 2rem;">
+          Si creías que los gimnasios caros solo eran por las máquinas brillantes o por las toallas blancas, espera a leer esto. Te vamos a contar lo que no sale en la publicidad: precios anuales, beneficios ocultos y hasta alguna que otra sorpresa que nadie te había contado antes. 💡 Prepárate porque esto está candente.
+        </p>
+
+
+      <br><br>
+
+      <!-- Power House -->
+      <div class="card-peligro" id="powerhouse">
+        <div class="numero-circulo">5</div>
+        <h2 style="color: #ff3c3c;">💎 TOP 5: Bodytech Jardín Plaza – Tecnología al servicio de tu cuerpo</h2>
+        <img src="../blogs/images/bodytech jardin.png" alt="Power House gimnasio moderno" />
+        <p>
+          💰 Precio anual: $1.995.000 COP (Categoría One Plus) <br>
+          Aunque es una de las sedes más compactas de la cadena, las reseñas son claras: es un espacio bien aprovechado, con excelente mantenimiento y buena distribución de máquinas. Las personas destacan el orden, la limpieza, y sobre todo, la calidad del servicio.
+          
+          Dato que no muchos saben: al ser categoría One Plus, puedes entrenar en otras sedes premium de la cadena en Colombia. Además, por estar dentro de Jardín Plaza, puedes combinar tu entrenamiento con un plan de recuperación express en el centro comercial. 🛍️💪 Ideal para quienes buscan comodidad, acceso rápido y flexibilidad de horario sin alejarse del sur.        </p>
+        
+      </div>
+
+      <!-- Tauros Gym -->
+      <div class="card-peligro" id="taurosgym">
+        <div class="numero-circulo">4</div>
+        <h2 style="color: #ff3c3c;">🏆 TOP 4: Bodytech Oeste – El favorito de la ladera</h2>
+        <img src="../blogs/images/bodytech oeste.png" alt="Tauros Gym Cali" />
+        <p>
+          💰 Precio anual: $1.995.000 COP (Categoría One Plus) <br>
+          Ubicado en la zona de Normandía, este gimnasio ofrece vistas espectaculares de los Farallones mientras haces tu rutina diaria. Con el mismo precio que la sede de Jardín Plaza, pero con una atmósfera más amplia y ventilada, es muy apreciado por quienes buscan entrenar alejados del ruido de la ciudad.
+          
+          Dato revelador: según reseñas, la comunidad del Bodytech Oeste es más enfocada y tranquila, perfecta si te gusta entrenar sin prisas ni multitudes. 🏞️✨ Además, muchos aseguran que es una "joya escondida" de la red Bodytech en Cali. Si quieres ambiente premium pero más relajado, este es tu lugar.        </p>
+        
+      </div>
+
+      
+
+      <!-- Leandro Gym -->
+      <div class="card-peligro" id="leandrogym">
+        <div class="numero-circulo">3</div>
+        <h2 style="color: #ff3c3c;">🥇 TOP 3: Centro Deportivo Luz Mery Tristán – Donde entrenas con historia de campeones</h2>
+        <img src="../blogs/images/luz mary.png" alt="Leandro Gym tecnología" />
+        <p>
+          💰 Precio anual aprox.: $2.400.000 COP <br>
+          Este centro no solo lleva el nombre de una leyenda del patinaje colombiano, sino que mantiene ese espíritu competitivo en todas sus áreas. Con una tarifa que ronda los $200.000 COP mensuales para entrenamiento integral, el costo anual llega a unos 2.4 millones.
+          
+          Dato que casi nadie te cuenta: aquí no solo vas a sudar por salud, sino que entras a un entorno donde muchos deportistas profesionales han iniciado su carrera. 🛼🔥 Además, cuenta con piscina semiolímpica, pista atlética, múltiples canchas y entrenadores de altísima calidad. Entrenas casi como si te prepararas para Juegos Panamericanos.        </p>
+        
+      </div>
+
+    
+
+      <!-- Gofitcaf -->
+      <div class="card-peligro" id="gofitcaf">
+        <div class="numero-circulo">2</div>
+        <h2 style="color: #ff3c3c;">TOP 2: Crew Wellness Elite – El club boutique que te hace sentir exclusivo</h2>
+        <img src="../blogs/images/crew.png" alt="Gofitcaf gimnasio tecnológico" />
+        <p>
+          💰 Precio anual aprox.: $2.640.000 COP <br>
+          📍 Ubicado en la zona de Ciudad Jardín, este gimnasio se siente como un oasis premium en medio del sur de Cali. Su mensualidad está alrededor de $220.000 COP, pero al hacer la cuenta del año, la cifra supera los 2.6 millones. ¿Por qué tan exclusivo? Crew Wellness Elite no es un gimnasio tradicional: es una experiencia boutique con entrenadores súper enfocados en personalización, clases dirigidas de cycling, funcional y hasta yoga restaurativo.
+          
+          Lo impactante: Su concepto de "wellness" es total, piensan en tu cuerpo y tu mente. Además, es perfecto si buscas comunidad cercana, buenas vibras, instalaciones impecables y entrenos donde no hay saturación de gente. 🚲✨   </p>
+      </div>
+
+
+      <!-- El Molino -->
+      <div class="card-peligro" id="elmolino">
+        <div class="numero-circulo">1</div>
+        <h2 style="color: #ff3c3c;">👑 TOP 1: Ángeles Elite – El verdadero paraíso fitness de Cali</h2>
+        <img src="../blogs/images/angeles.png" alt="El Molino gimnasio" />
+        <p>
+          💰 Precio anual: $2.661.000 COP <br>
+          Y aquí llegamos al número 1: Ángeles Elite, el gimnasio que supera a todos no solo en precio, sino en lujo, experiencia y tecnología.
+          
+          Este no es solo un lugar para entrenar, es un espacio para vivir una experiencia de bienestar total. 🚨 ¿Sabías que tienen jacuzzi, baños de vapor, programas de fisioterapia integrados, zona de spa y entrenadores especializados por disciplina? Hasta el ambiente se siente diferente: exclusivo, elegante y con detalles que elevan la experiencia a otro nivel.
+          
+          Además, algo que encanta a sus usuarios es que la limpieza es impecable y el servicio al cliente es personalizado. Tienes planes para entrenamientos funcionales, clases grupales, personalizadas y una zona de cardio que parece sacada de un gimnasio de Estados Unidos. 💯
+          
+          Si buscas lo mejor de lo mejor en Cali, este es el gimnasio para ti. Ángeles Elite es el verdadero top para quienes quieren cuerpo de acero, pero también una experiencia premium de alto nivel.        </p>
+        
+      </div>
+
+
+      <h2 style="margin-top: 40px; color: #fff;">Conclusión</h2>
+      <p>
+        Ahora ya lo sabes: no es solo pagar por ir al gimnasio, es pagar por la experiencia completa. Desde la personalización del entrenamiento, las instalaciones de lujo, hasta la comodidad y el servicio de primer nivel.
+
+        Así que si te lo puedes permitir, cualquiera de estos lugares te llevará a tu mejor versión. Si no, no te preocupes: sigue dándole con toda donde estés, ¡lo importante siempre es moverse! 💪✨      </p>
+    </div>
+  </section>
+
+  <!-- RECOMENDACIÓN FINAL -->
+  <section id="recomendacion">
+    <div class="destacado-final">
+      <h2 style="color: #ff3c3c;">¡Conoce los mejores gimnasios de Cali cerca de ti!</h2>
+      <p>
+        ¿Te imaginas encontrar un gimnasio de alta tecnología justo en tu zona? En <strong>dondeseria.com</strong> te mostramos los espacios más innovadores para que entrenes como un profesional, sin salir de tu barrio. 
+      </p>
+      <p>
+        Explora el mapa interactivo y descubre las mejores opciones, horarios y ubicaciones. ¡No te quedes sin vivir la experiencia fitness del futuro!
+      </p>
+      <a class="boton-contacto" href="https://www.dondeseria.com/mapa/index.html" target="_blank">
+        🗺️ Ver gimnasios en el mapa
+      </a>
+    </div>
+  </section>
+
+
+  <!-- SCRIPTS -->
+  <script>
+    window.addEventListener("load", () => {
+      setTimeout(() => {
+        document.querySelector(".bars-box").style.display = "none";
+      }, 1500);
+      document.querySelector("header").classList.add("active");
+    });
+
+    const menuIcon = document.getElementById("menu-icon");
+    const navMenu = document.querySelector("nav");
+    menuIcon.addEventListener("click", () => {
+      navMenu.classList.toggle("active");
+    });
+  </script>
+</body>
+</html>
+
