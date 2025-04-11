@@ -208,5 +208,45 @@
       "lat": 3.4035397724854275,
       "lng": -76.54432095105973,
       "url": "https://powerhouse.dondeseria.com/"
-    }           
+    },
+    {
+      "id": "mutant",
+      "name": "Mutant Family",
+      "description": "Cl. 13 #47-06",
+      "lat": 3.412189910366613,
+      "lng": -76.53356591123085,
+      "url": "https://mutantfamily.dondeseria.com/"
+    },
+    {
+      "id": "exer",
+      "name": "Exer Gym",
+      "description": "Cl. 12 #44-16",
+      "lat": 3.415024382469356, 
+      "lng": -76.53498143167413,
+      "url": "https://exergym.dondeseria.com/"
+    },
+    {
+      "id": "castro",
+      "name": "Castro Gym",
+      "description": "Cl. 13 #44A - 10",
+      "lat": 3.4140145630894576,  
+      "lng": -76.5330972758522,
+      "url": "https://castrogym.dondeseria.com/"
+    },
+    {
+      "id": "dleo",
+      "name": "DLeo CAF",
+      "description": "Cra. 40b #10-16",
+      "lat": 3.4193451328598057,  
+      "lng": -76.53528791633181,
+      "url": "https://cafdleogym.dondeseria.com/"
+    },
+    {
+      "id": "taurosgym",
+      "name": "Tauros Gym",
+      "description": "Sede Oriente",
+      "lat": 3.420725102796438, 
+      "lng": -76.47745710627193,
+      "url": "https://taurosgym.dondeseria.com/sede-oriente.html"
+    }       
   ]
