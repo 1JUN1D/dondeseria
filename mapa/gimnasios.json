@@ -248,5 +248,13 @@
       "lat": 3.420725102796438, 
       "lng": -76.47745710627193,
       "url": "https://taurosgym.dondeseria.com/sede-oriente.html"
-    }       
+    },
+    {
+      "id": "afe",
+      "name": "Afe Gym",
+      "description": "Sede Refugio",
+      "lat": 3.3982295524642434, 
+      "lng": -76.54978286662347,
+      "url": "https://afegym.dondeseria.com/sede-refugio.html"
+    }        
   ]
