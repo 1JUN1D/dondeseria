@@ -15,6 +15,7 @@ $(document).ready(() => {
         nav:true,
         navText: navText,
         autoplay: true,
+        autoplayTimeout: 10000,
         autoplayHoverPause: true
     })
 
