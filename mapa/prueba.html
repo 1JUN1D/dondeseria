@@ -1,0 +1,557 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gimnasios en Cali - Mapa Animado</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.css" />
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Arial', sans-serif;
+    }
+    #map {
+      width: 100vw;
+      height: 100vh;
+    }
+    .title-overlay {
+      position: absolute;
+      top: 20px;
+      left: 60px;
+      z-index: 1000;
+      background-color: rgba(0, 0, 0, 0.7);
+      color: white;
+      padding: 15px 25px;
+      border-radius: 8px;
+      font-size: 24px;
+      font-weight: bold;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+      display: none;
+    }
+    .counter-overlay {
+      position: absolute;
+      bottom: 30px;
+      right: 30px;
+      z-index: 1000;
+      background-color: rgba(0, 0, 0, 0.7);
+      color: white;
+      padding: 10px 20px;
+      border-radius: 8px;
+      font-size: 20px;
+      font-weight: bold;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    }
+    .marker-icon {
+      width: 40px;
+      height: 40px;
+      background: #f0f0f0;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0px 4px 8px rgba(0,0,0,0.5);
+      border: 2px solid white;
+      transition: transform 0.3s ease;
+    }
+    .marker-icon:hover {
+      transform: scale(1.2);
+    }
+    .custom-popup {
+      text-align: center;
+      max-width: 220px;
+    }
+    .custom-popup h3 {
+      margin: 8px 0;
+      color: #333;
+    }
+    .custom-popup p {
+      margin: 5px 0;
+      color: #666;
+    }
+    .custom-popup a {
+      display: block;
+      width: 100%;
+      margin-top: 8px;
+      padding: 8px 0;
+      background: #007bff;
+      color: #fff;
+      text-decoration: none;
+      border-radius: 5px;
+      font-weight: bold;
+      transition: background 0.3s ease;
+    }
+    .custom-popup a:hover {
+      background: #0056b3;
+    }
+    .footer {
+      position: absolute;
+      bottom: 20px;
+      left: 20px;
+      z-index: 1000;
+      color: white;
+      font-size: 14px;
+      text-shadow: 1px 1px 2px rgba(0,0,0,0.7);
+    }
+    .restart-btn {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      z-index: 1000;
+      background-color: #007bff;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      padding: 10px 20px;
+      font-size: 16px;
+      font-weight: bold;
+      cursor: pointer;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+      transition: background-color 0.3s ease;
+    }
+    .restart-btn:hover {
+      background-color: #0056b3;
+    }
+  </style>
+</head>
+<body>
+  <div id="map"></div>
+  <div class="title-overlay" style="display: none;"></div>
+  <div class="counter-overlay" style="display: none;">0 de 35 gimnasios</div>
+  <button class="restart-btn">Reiniciar Animación</button>
+  <div class="footer">© 2025 CUSIG S.A.S | DóndeSería.com</div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      // Datos de los gimnasios
+      const gimnasios = [
+        {
+          "id": "LeandroGym",
+          "name": "Leandro Gym",
+          "description": "Sede Poblado Campestre",
+          "lat": 3.4169655644150763,
+          "lng": -76.45742373439316,
+          "url": "https://leandrogym.dondeseria.com/sede-poblado-campestre.html"
+        },
+        {
+          "id": "LeandroGym",
+          "name": "Leandro Gym",
+          "description": "Sede Nueva Floresta",
+          "lat": 3.432335512341686,
+          "lng": -76.50037162883524,
+          "url": "https://leandrogym.dondeseria.com/sede-nueva-floresta.html"
+        },
+        {
+          "id": "Greccosgym",
+          "name": "Greccos Gym",
+          "description": "Av. 3 Nte. #108",
+          "lat": 3.4767987706662846,
+          "lng": -76.51774292360669,
+          "url": "https://greccosgym.dondeseria.com/"
+        },
+        {
+          "id": "Imperialbox",
+          "name": "Imperial Box",
+          "description": "Av. de las Americas #19N-69",
+          "lat": 3.4599256917187207,
+          "lng": -76.52831660941015,
+          "url": "https://imperialbox.dondeseria.com/"
+        },
+        {
+          "id": "muellegym",
+          "name": "Muelle Gym",
+          "description": "Cra 2 #44N-108 B/Popular",
+          "lat": 3.4716090236350974,
+          "lng": -76.50988232720863,
+          "url": "https://muellegym.dondeseria.com/"
+        },
+        {
+          "id": "taurosgym",
+          "name": "Tauros Gym",
+          "description": "Sede Autopista Sur",
+          "lat": 3.436614626279929, 
+          "lng": -76.51525204372254,
+          "url": "https://taurosgym.dondeseria.com/sede-autopista-sur.html"
+        },
+        {
+          "id": "taurosgym",
+          "name": "Tauros Gym",
+          "description": "Sede Aries",
+          "lat": 3.422494564735847, 
+          "lng": -76.49203255928099,
+          "url": "https://taurosgym.dondeseria.com/sede-aries.html"
+        },
+        {
+          "id": "taurosgym",
+          "name": "Tauros Gym",
+          "description": "Sede Yira Castro",
+          "lat": 3.4264191969468194, 
+          "lng": -76.49657253906575,
+          "url": "https://taurosgym.dondeseria.com/sede-yira-castro.html"
+        },
+        {
+          "id": "taurosgym",
+          "name": "Tauros Gym",
+          "description": "Sede Poblado Campestre",
+          "lat": 3.4105414988209892, 
+          "lng": -76.45804154467884,
+          "url": "https://taurosgym.dondeseria.com/sede-poblado-campestre.html"
+        },
+        {
+          "id": "MegafitnessGym",
+          "name": "MegaFitness Gym",
+          "description": "Sede El Diamante",
+          "lat": 3.42092101497991,
+          "lng": -76.50207196925342,
+          "url": "https://megafitnessgym.dondeseria.com/sede-el-diamante.html"
+        },
+        {
+          "id": "MegafitnessGym",
+          "name": "MegaFitness Gym",
+          "description": "Sede Bonilla Aragon",
+          "lat": 3.4236565711636864,
+          "lng": -76.4846660522568,
+          "url": "https://megafitnessgym.dondeseria.com/sede-bonilla-aragon.html"
+        },
+        {
+          "id": "MegafitnessGym",
+          "name": "MegaFitness Gym",
+          "description": "Sede Poblado 1",
+          "lat": 3.419047633682711,
+          "lng": -76.49742899963495,
+          "url": "https://megafitnessgym.dondeseria.com/sede-poblado-1.html"
+        },
+        {
+          "id": "thanosgym",
+          "name": "Thanos Gym",
+          "description": "Cl. 72 #1 h 10",
+          "lat": 3.4752875459247843,
+          "lng": -76.4847842093621,
+          "url": "https://thanosgym.dondeseria.com/"
+        },
+        {
+          "id": "elmolinocaf",
+          "name": "El Molino CAF",
+          "description": "Cl. 18 #101B-39",
+          "lat": 3.3641437653894566,
+          "lng": -76.52898809256929,
+          "url": "https://elmolinocaf.dondeseria.com/"
+        },
+        {
+          "id": "worldfitness",
+          "name": "Club Deportivo World Fitness",
+          "description": "Cl. 25 #84-06",
+          "lat": 3.3833460657691687,
+          "lng": -76.5254168129805,
+          "url": "https://clubdeportivoworldfitness.dondeseria.com/"
+        },
+        {
+          "id": "hitgym",
+          "name": "Hit GYM",
+          "description": "Cra 48a #54-13",
+          "lat": 3.396176082519973,
+          "lng": -76.51030652631114,
+          "url": "https://hitgym.dondeseria.com/"
+        },
+        {
+          "id": "forcegym",
+          "name": "Force GYM",
+          "description": "Cra. 43b #40-06",
+          "lat": 3.408766661611298,
+          "lng": -76.51466879253863,
+          "url": "https://forcegym.dondeseria.com/"
+        },
+        {
+          "id": "bfitness",
+          "name": "B-Fitness",
+          "description": "Cl. 44 #1e - 65",
+          "lat": 3.467401161653909,
+          "lng": -76.50866634474245,
+          "url": "https://bfitness.dondeseria.com/"
+        },
+        {
+          "id": "romagym",
+          "name": "Roma Gym",
+          "description": "# a 71a-227, Dg. 15 #711",
+          "lat": 3.4458011564578217,
+          "lng": -76.48635026643133,
+          "url": "https://romagym.dondeseria.com/"
+        },
+        {
+          "id": "fitnesszone",
+          "name": "Fitness Zone",
+          "description": "Cl. 13 #65b-26",
+          "lat": 3.399446311311982,
+          "lng": -76.53752906127612,
+          "url": "https://fitnesszone.dondeseria.com/"
+        },
+        {
+          "id": "gladiadorcaf",
+          "name": "Gladiador CAF",
+          "description": "Cl. 13 #65b-26",
+          "lat": 3.4138335430832694,
+          "lng": -76.5135579933409,
+          "url": "https://gladiadorcaf.dondeseria.com/"
+        },
+        {
+          "id": "gofit",
+          "name": "Go Fit",
+          "description": "Cl. 13b #83-48",
+          "lat": 3.38362110631098,
+          "lng": -76.53510049849415,
+          "url": "https://gofitcaf.dondeseria.com/"
+        },
+        {
+          "id": "hypertrophylab",
+          "name": "Hypertrophy Lab",
+          "description": "Cl. 16 #84A - 11 2 PISO",
+          "lat": 3.3829056376229123,
+          "lng": -76.52855386448572,
+          "url": "https://hypertrophylab.dondeseria.com/"
+        },
+        {
+          "id": "mfcgym",
+          "name": "M.F.C Gym",
+          "description": "Cl. 13 #66a-30",
+          "lat": 3.3973689702978898,
+          "lng": -76.53817180672613,
+          "url": "https://mfcgym.dondeseria.com/"
+        },
+        {
+          "id": "nextlevel",
+          "name": "Next Level Gym",
+          "description": "Cl. 10a #73-04",
+          "lat": 3.3916259175818637,
+          "lng": -76.54207886627445,
+          "url": "https://nextlevelgym.dondeseria.com/"
+        },
+        {
+          "id": "powerhouse",
+          "name": "Power House",
+          "description": "Sede Cañaveralejo",
+          "lat": 3.4035397724854275,
+          "lng": -76.54432095105973,
+          "url": "https://powerhouse.dondeseria.com/"
+        },
+        {
+          "id": "mutant",
+          "name": "Mutant Family",
+          "description": "Cl. 13 #47-06",
+          "lat": 3.412189910366613,
+          "lng": -76.53356591123085,
+          "url": "https://mutantfamily.dondeseria.com/"
+        },
+        {
+          "id": "exer",
+          "name": "Exer Gym",
+          "description": "Cl. 12 #44-16",
+          "lat": 3.415024382469356, 
+          "lng": -76.53498143167413,
+          "url": "https://exergym.dondeseria.com/"
+        },
+        {
+          "id": "castro",
+          "name": "Castro Gym",
+          "description": "Cl. 13 #44A - 10",
+          "lat": 3.4140145630894576,  
+          "lng": -76.5330972758522,
+          "url": "https://castrogym.dondeseria.com/"
+        },
+        {
+          "id": "dleo",
+          "name": "DLeo CAF",
+          "description": "Cra. 40b #10-16",
+          "lat": 3.4193451328598057,  
+          "lng": -76.53528791633181,
+          "url": "https://cafdleogym.dondeseria.com/"
+        },
+        {
+          "id": "taurosgym",
+          "name": "Tauros Gym",
+          "description": "Sede Oriente",
+          "lat": 3.420725102796438, 
+          "lng": -76.47745710627193,
+          "url": "https://taurosgym.dondeseria.com/sede-oriente.html"
+        },
+        {
+          "id": "afe",
+          "name": "Afe Gym",
+          "description": "Sede Refugio",
+          "lat": 3.3982295524642434, 
+          "lng": -76.54978286662347,
+          "url": "https://afegym.dondeseria.com/sede-refugio.html"
+        }
+      ];
+
+      // Asignamos rutas de íconos reales según el HTML proporcionado
+      const iconUrls = {
+        "LeandroGym": "../mapa/imagenes/logo-leandrogym2.png",
+        "Greccosgym": "../mapa/imagenes/greccos-logo-gym.png",
+        "Imperialbox": "../mapa/imagenes/logo-imperial-box.png",
+        "muellegym": "../mapa/imagenes/muelle-gym-logo.png",
+        "taurosgym": "../mapa/imagenes/tauros-gym-logo.png",
+        "MegafitnessGym": "../mapa/imagenes/megafitness-gym-logo.png",
+        "thanosgym": "../mapa/imagenes/thanos_gym_logo.png",
+        "elmolinocaf": "../mapa/imagenes/el_molino_logo.png",
+        "worldfitness": "../mapa/imagenes/worldfitness-logo.png",
+        "hitgym": "../mapa/imagenes/hit_gym_logo.png",
+        "forcegym": "../mapa/imagenes/logo_force_gym.png",
+        "bfitness": "../mapa/imagenes/bfitness_logo.png",
+        "romagym": "../mapa/imagenes/romagym.png",
+        "fitnesszone": "../mapa/imagenes/fitness_zone.png",
+        "gladiadorcaf": "../mapa/imagenes/gladiador_logo.png",
+        "gofit": "../mapa/imagenes/gofit_logo.png",
+        "hypertrophylab": "../mapa/imagenes/hypertrophy_lab_logo.png",
+        "mfcgym": "../mapa/imagenes/mfc_logo.png",
+        "nextlevel": "../mapa/imagenes/next_level_logo.png",
+        "powerhouse": "../mapa/imagenes/phouse_logo2.png",
+        "mutant": "../mapa/imagenes/mutant_logo.png",
+        "exer": "../mapa/imagenes/exergym_logo.png",
+        "castro": "../mapa/imagenes/logo_castrogym.png",
+        "dleo": "../mapa/imagenes/dleo_logo_negro.png",
+        "afe": "../mapa/imagenes/afegym_logo.png"
+      };
+
+      // Inicializar el mapa con vista satelital
+      const map = L.map('map', {
+        zoomControl: false,
+        attributionControl: false
+      }).setView([3.4250, -76.5200], 12);
+
+      // Capa base satelital de Google
+      L.tileLayer('https://mt1.google.com/vt/lyrs=s&x={x}&y={y}&z={z}', {
+        maxZoom: 20,
+        subdomains: ['mt0', 'mt1', 'mt2', 'mt3']
+      }).addTo(map);
+
+      // Grupo para marcadores
+      const markersGroup = L.layerGroup().addTo(map);
+      let markers = [];
+      let currentIndex = 0;
+      const totalGimnasios = gimnasios.length;
+      let animationInProgress = false;
+
+      // Actualizar contador de gimnasios
+      const counterOverlay = document.querySelector('.counter-overlay');
+      counterOverlay.textContent = `0 de ${totalGimnasios} gimnasios`;
+
+      // Función para crear un marcador personalizado
+      function createCustomMarker(gym) {
+        // Determinar el ícono basado en el ID del gimnasio
+        const iconUrl = iconUrls[gym.id] || "../mapa/imagenes/default.png";
+        
+        // Crear icono personalizado
+        const customIcon = L.divIcon({
+          className: '',
+          html: `
+            <div class="marker-icon">
+              <img src="${iconUrl}" style="width: 30px; height: 30px; object-fit: contain;">
+            </div>
+          `,
+          iconSize: [40, 40],
+          iconAnchor: [20, 20],
+          popupAnchor: [0, -20]
+        });
+
+        // Crear marcador
+        const marker = L.marker([gym.lat, gym.lng], { 
+          icon: customIcon,
+          opacity: 0
+        });
+        
+        // Crear popup personalizado
+        marker.bindPopup(`
+          <div class="custom-popup">
+            <h3>${gym.name}</h3>
+            <p>${gym.description}</p>
+            <a href="${gym.url}" target="_blank">Ver detalles</a>
+          </div>
+        `, { closeButton: false });
+        
+        return marker;
+      }
+
+      // Función para iniciar la animación
+      function startAnimation() {
+        if (animationInProgress) return;
+        
+        animationInProgress = true;
+        
+        // Limpiar marcadores existentes
+        markersGroup.clearLayers();
+        markers = [];
+        currentIndex = 0;
+        
+        // Actualizar contador
+        counterOverlay.textContent = `0 de ${totalGimnasios} gimnasios`;
+        
+        // Mostrar el título después de 1 segundo (más rápido)
+        setTimeout(() => {
+          const titleOverlay = document.querySelector('.title-overlay');
+          titleOverlay.style.display = 'block';
+          titleOverlay.style.animation = 'fadeIn 0.5s ease-in-out';
+        }, 1000);
+        
+        // Iniciar la secuencia después de 2 segundos (más rápido)
+        setTimeout(() => {
+          addNextMarker();
+        }, 2000);
+      }
+
+      // Función para añadir marcadores secuencialmente
+      function addNextMarker() {
+        if (currentIndex >= gimnasios.length) {
+          // Todos los marcadores se han añadido, realizar un zoom out final
+          setTimeout(() => {
+            map.flyTo([3.4250, -76.5200], 11, {
+              duration: 2
+            });
+            animationInProgress = false;
+          }, 800);
+          return;
+        }
+        
+        const gym = gimnasios[currentIndex];
+        const marker = createCustomMarker(gym);
+        
+        // Añadir marcador al grupo y array
+        marker.addTo(markersGroup);
+        markers.push(marker);
+        
+        // Zoom al marcador actual (más rápido)
+        map.flyTo([gym.lat, gym.lng], 15, {
+          duration: 1
+        });
+        
+        // Mostrar el marcador con animación (más rápido)
+        setTimeout(() => {
+          marker.setOpacity(1);
+          marker.openPopup();
+          
+          // Actualizar contador
+          currentIndex++;
+          counterOverlay.textContent = `${currentIndex} de ${totalGimnasios} gimnasios`;
+          
+          // Llamar al siguiente marcador después de un retraso (más rápido)
+          setTimeout(() => {
+            marker.closePopup();
+            addNextMarker();
+          }, 600);
+        }, 600);
+      }
+
+      // Botón para reiniciar la animación
+      document.querySelector('.restart-btn').addEventListener('click', function() {
+        // Ocultar el título para reiniciarlo
+        document.querySelector('.title-overlay').style.display = 'none';
+        // Reiniciar animación
+        startAnimation();
+      });
+
+      // Iniciar la animación al cargar la página
+      startAnimation();
+    });
+  </script>
+</body>
+</html>

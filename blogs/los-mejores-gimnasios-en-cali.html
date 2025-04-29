@@ -1,0 +1,786 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Guía completa de los mejores gimnasios en Cali. Descubre gimnasios baratos, premium y con ambiente social. Tours virtuales 360° disponibles.">
+    <meta name="keywords" content="gimnasios Cali, gyms Cali, fitness Cali, tours virtuales gimnasios, dondeseria, gimnasios baratos Cali, gimnasios para ligar Cali">
+    <title>Gimnasios en Cali | Guía Definitiva con Tours Virtuales 360°</title>
+    <style>
+        :root {
+            --primary: #ff0000;
+            --secondary: #ffffff;
+            --dark: #000000;
+            --gray: #222222;
+            --light-gray: #444444;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: var(--dark);
+            color: var(--secondary);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        header {
+            background: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)), url('https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
+            background-size: cover;
+            background-position: center;
+            height: 80vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        header::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 100px;
+            background: linear-gradient(transparent, var(--dark));
+        }
+        
+        h1 {
+            font-size: 4rem;
+            margin-bottom: 20px;
+            color: var(--primary);
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            text-shadow: 0 0 10px rgba(255, 0, 0, 0.5);
+            animation: glow 2s infinite alternate;
+        }
+        
+        @keyframes glow {
+            from {
+                text-shadow: 0 0 5px rgba(255, 0, 0, 0.5);
+            }
+            to {
+                text-shadow: 0 0 20px rgba(255, 0, 0, 0.8), 0 0 30px rgba(255, 0, 0, 0.6);
+            }
+        }
+        
+        .intro {
+            font-size: 1.5rem;
+            max-width: 800px;
+            margin-bottom: 30px;
+        }
+        
+        .cta-button {
+            display: inline-block;
+            background-color: var(--primary);
+            color: var(--secondary);
+            padding: 15px 30px;
+            font-size: 1.2rem;
+            text-decoration: none;
+            border-radius: 50px;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            font-weight: bold;
+            letter-spacing: 1px;
+            border: 2px solid var(--primary);
+            margin-top: 20px;
+        }
+        
+        .cta-button:hover {
+            background-color: transparent;
+            color: var(--primary);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(255, 0, 0, 0.3);
+        }
+        
+        .content-section {
+            padding: 80px 0;
+            border-bottom: 1px solid var(--light-gray);
+        }
+        
+        .content-section:last-child {
+            border-bottom: none;
+        }
+        
+        h2 {
+            font-size: 2.5rem;
+            margin-bottom: 40px;
+            color: var(--primary);
+            position: relative;
+            display: inline-block;
+        }
+        
+        h2::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background-color: var(--primary);
+        }
+        
+        h3 {
+            font-size: 1.8rem;
+            margin: 40px 0 20px;
+            color: var(--secondary);
+        }
+        
+        p {
+            margin-bottom: 20px;
+            font-size: 1.1rem;
+        }
+        
+        ul, ol {
+            margin-left: 30px;
+            margin-bottom: 20px;
+        }
+        
+        li {
+            margin-bottom: 10px;
+        }
+        
+        .gym-card {
+            background-color: var(--gray);
+            border-radius: 10px;
+            padding: 30px;
+            margin-bottom: 30px;
+            border-left: 5px solid var(--primary);
+            transition: transform 0.3s ease;
+        }
+        
+        .gym-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(255, 0, 0, 0.1);
+        }
+        
+        .gym-title {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        
+        .medal {
+            font-size: 2rem;
+            margin-right: 15px;
+        }
+        
+        .gym-name {
+            font-size: 1.8rem;
+            color: var(--primary);
+        }
+        
+        .gym-zone {
+            font-size: 1rem;
+            color: var(--secondary);
+            opacity: 0.8;
+            margin-left: 10px;
+        }
+        
+        .gym-features {
+            margin: 20px 0;
+        }
+        
+        .gym-features li {
+            position: relative;
+            padding-left: 25px;
+            list-style-type: none;
+        }
+        
+        .gym-features li::before {
+            content: '✓';
+            color: var(--primary);
+            position: absolute;
+            left: 0;
+            font-weight: bold;
+        }
+        
+        .price-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 40px 0;
+            background-color: var(--gray);
+        }
+        
+        .price-table th, .price-table td {
+            padding: 15px;
+            text-align: left;
+            border-bottom: 1px solid var(--light-gray);
+        }
+        
+        .price-table th {
+            background-color: var(--primary);
+            color: var(--secondary);
+            font-weight: bold;
+            text-transform: uppercase;
+        }
+        
+        .price-table tr:hover {
+            background-color: var(--light-gray);
+        }
+        
+        .conclusion {
+            background-color: var(--gray);
+            padding: 40px;
+            border-radius: 10px;
+            margin-top: 40px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .conclusion::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 5px;
+            height: 100%;
+            background-color: var(--primary);
+        }
+        
+        .warning {
+            color: var(--primary);
+            font-weight: bold;
+        }
+        
+        .emoji {
+            font-size: 1.2rem;
+            margin-right: 5px;
+        }
+        
+        .note {
+            font-style: italic;
+            opacity: 0.8;
+            margin-top: 40px;
+            font-size: 0.9rem;
+        }
+        
+        footer {
+            background-color: var(--gray);
+            padding: 30px 0;
+            text-align: center;
+        }
+        
+        .social-links {
+            margin-top: 20px;
+        }
+        
+        .social-links a {
+            color: var(--secondary);
+            margin: 0 10px;
+            font-size: 1.5rem;
+            transition: color 0.3s ease;
+        }
+        
+        .social-links a:hover {
+            color: var(--primary);
+        }
+        
+        .back-to-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background-color: var(--primary);
+            color: var(--secondary);
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-decoration: none;
+            font-size: 1.5rem;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+            z-index: 999;
+        }
+        
+        .back-to-top.active {
+            opacity: 1;
+            visibility: visible;
+        }
+        
+        .back-to-top:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(255, 0, 0, 0.4);
+        }
+        
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2.5rem;
+            }
+            
+            .intro {
+                font-size: 1.2rem;
+            }
+            
+            h2 {
+                font-size: 2rem;
+            }
+            
+            h3 {
+                font-size: 1.5rem;
+            }
+            
+            .gym-name {
+                font-size: 1.5rem;
+            }
+            
+            .content-section {
+                padding: 50px 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>GIMNASIOS EN CALI</h1>
+            <p class="intro">¿Cansado de buscar el gimnasio perfecto en Cali y terminar en un lugar aburrido donde hasta las pesas bostezan? ¡Aquí está la guía más útil para encontrar tu próximo templo fitness!</p>
+            <p class="intro">👉 Y si quieres ver los gimnasios COMO SI ESTUVIERAS DENTRO (¡sí, sin moverte del sofá!), entra a <a href="https://www.dondeseria.com" style="color: var(--primary); text-decoration: none;">www.dondeseria.com</a> y haz un TOUR VIRTUAL 360° en cada Gimnasio de la ciudad. 📲✨</p>
+            <a href="#indice" class="cta-button">Explora la Guía</a>
+        </div>
+    </header>
+    
+    <main class="container">
+        <section id="indice" class="content-section">
+            <h2>📌 ÍNDICE</h2>
+            <ol>
+                <li><a href="#adiccion" style="color: var(--secondary); text-decoration: none;">¿Por qué los caleños son adictos a estos gimnasios?</a></li>
+                <li><a href="#caros-vs-baratos" style="color: var(--secondary); text-decoration: none;">Gimnasios Caros vs. Baratos: ¿Dónde encajas tú?</a></li>
+                <li><a href="#vibra-social" style="color: var(--secondary); text-decoration: none;">Gimnasios con vibra social (para los que van a sudar… y a ligar)</a></li>
+                <li><a href="#precios" style="color: var(--secondary); text-decoration: none;">Lista de precios y ubicación de cada Gimnasio conocido de la ciudad</a></li>
+                <li><a href="#elegir" style="color: var(--secondary); text-decoration: none;">¿Cómo elegir tu gimnasio ideal? (Sin llorar en el intento)</a></li>
+            </ol>
+        </section>
+        
+        <section id="adiccion" class="content-section">
+            <h2>1. ¿POR QUÉ LOS CALEÑOS SON ADICTOS A ESTOS GIMNASIOS?</h2>
+            <p>Cali no solo es salsa y cholado… ¡es músculo y disciplina! 🎶💪 Los caleños tienen una obsesión saludable por entrenar (y por subirlo a Instagram, claro). Pero no todos los gimnasios son iguales: algunos tienen equipos de última, otros tienen ambiente de familia, y otros… bueno, son solo cuatro paredes con un espejo.</p>
+            <p>Aquí la clave: Los gimnasios en Cali que triunfan son los que combinan buen equipo, comunidad y energía. ¡Y en <a href="https://www.dondeseria.com" style="color: var(--primary); text-decoration: none;">www.dondeseria.com</a> puedes verlos TODOS en 360° antes de ir! (Sí, hasta el olor a motivación se siente virtual).</p>
+        </section>
+        
+        <section id="caros-vs-baratos" class="content-section">
+            <h2>2. GIMNASIOS CAROS VS. BARATOS: ¿DÓNDE ENCAJAS TÚ?</h2>
+            <p>En Cali, no todos los gimnasios son iguales. Algunos te ofrecen máquinas viejas y entrenadores desmotivados… mientras otros te entregan resultados rápidos, comunidad de alto nivel y tecnología de punta.</p>
+            <p>¿Qué prefieres: precio bajo o resultados garantizados? Descubre aquí dónde encajas.</p>
+            
+            <h3>🏆 LOS 3 MEJORES GIMNASIOS BARATOS DE CALI (QUE NO COMPROMETEN CALIDAD)</h3>
+            
+            <div class="gym-card">
+                <div class="gym-title">
+                    <span class="medal">🥇</span>
+                    <h4 class="gym-name">GRECOS <span class="gym-zone">(Zona NORTE)</span></h4>
+                </div>
+                <p><strong>¿Quieres un gimnasio BARATO pero con ambiente de familia? Grecos es tu lugar.</strong></p>
+                <ul class="gym-features">
+                    <li>Precios increíbles sin sacrificar espacio o equipos.</li>
+                    <li>Entrenadores que te tratan como un "VIGA" (¡así le dicen a los clientes estrella!).</li>
+                    <li>Instalaciones enormes (¡sorpréndete con el tour virtual!).</li>
+                </ul>
+                <p><span class="emoji">🚀</span> <strong>¿Listo para entrenar como un "VIGA"?</strong> Haz clic aquí y descubre Grecos por dentro: <a href="https://greccosgym.dondeseria.com/" style="color: var(--primary); text-decoration: none;">https://greccosgym.dondeseria.com/</a></p>
+            </div>
+            
+            <div class="gym-card">
+                <div class="gym-title">
+                    <span class="medal">🥈</span>
+                    <h4 class="gym-name">TAUROS AUTOPISTA <span class="gym-zone">(Zona SUR)</span></h4>
+                </div>
+                <p><strong>Este gimnasio te prueba que "barato" NO significa "low cost".</strong></p>
+                <ul class="gym-features">
+                    <li>Comunidad adictiva: Todos se motivan entre sí (¡te harán amar el dolor post-entreno!).</li>
+                    <li>Infraestructura de lujo (parece caro… pero no lo es).</li>
+                    <li>No querrás irte: El ambiente te engancha desde el primer día.</li>
+                </ul>
+                <p><span class="emoji">🔥</span> <strong>¿Quieres un gimnasio que te obligue a dar el 100%?</strong> Conoce Tauros Autopista aquí: <a href="https://taurosgym.dondeseria.com/sede-autopista-sur.html" style="color: var(--primary); text-decoration: none;">https://taurosgym.dondeseria.com/sede-autopista-sur.html</a></p>
+            </div>
+            
+            <div class="gym-card">
+                <div class="gym-title">
+                    <span class="medal">🥉</span>
+                    <h4 class="gym-name">LEANDRO GYM <span class="gym-zone">(Zona ORIENTE)</span></h4>
+                </div>
+                <p><strong>¿Te gustaría pagar POCO, pero entrenar como en un gimnasio PREMIUM?</strong></p>
+                <ul class="gym-features">
+                    <li>Zonas especializadas por tipo de entrenamiento (¡nada de máquinas amontonadas!).</li>
+                    <li>Precios tan bajos que pensarás que es un error (pero no lo es).</li>
+                    <li>Calidad que sorprende: Equipo moderno y mantenido.</li>
+                </ul>
+                <p><span class="emoji">💥</span> <strong>¿Apostarías por un gimnasio barato con calidad premium?</strong> Haz el tour de Leandro Gym ahora: <a href="https://leandrogym.dondeseria.com/sede-nueva-floresta.html" style="color: var(--primary); text-decoration: none;">https://leandrogym.dondeseria.com/sede-nueva-floresta.html</a></p>
+            </div>
+            
+            <h3>💎 LOS 3 MEJORES GIMNASIOS PREMIUM DE CALI (PARA QUIENES EXIGEN MÁS)</h3>
+            
+            <div class="gym-card">
+                <div class="gym-title">
+                    <span class="medal">🥇</span>
+                    <h4 class="gym-name">HYPERTROPHY LAB <span class="gym-zone">(Zona SUR)</span></h4>
+                </div>
+                <p><strong>Olvídate de entrenadores que te ignoran. Aquí cada movimiento está monitoreado.</strong></p>
+                <ul class="gym-features">
+                    <li>Enfoque 100% personalizado (resultados rápidos o te devolvemos tu dinero).</li>
+                    <li>Tecnología de punta: No es un gimnasio, es un LABORATORIO de transformación.</li>
+                    <li>Clientes que son prueba viviente (¡verás cambios en semanas!).</li>
+                </ul>
+                <p><span class="emoji">🎯</span> <strong>¿Cansado de entrenar sin ver resultados?</strong> Hypertrophy Lab es tu solución: <a href="https://hypertrophylab.dondeseria.com/" style="color: var(--primary); text-decoration: none;">https://hypertrophylab.dondeseria.com/</a></p>
+            </div>
+            
+            <div class="gym-card">
+                <div class="gym-title">
+                    <span class="medal">🥈</span>
+                    <h4 class="gym-name">GO FITNESS <span class="gym-zone">(Zona SUR)</span></h4>
+                </div>
+                <p><strong>¿Quieres rodearte de personas disciplinadas que te inspiren? Go Fitness es EL lugar.</strong></p>
+                <ul class="gym-features">
+                    <li>Comunidad de alto rendimiento (gente que te empujará a ser mejor).</li>
+                    <li>No es un gimnasio, es un estilo de vida (el ambiente te transformará).</li>
+                    <li>Vale cada peso: Inviertes en tu cuerpo… y en tu mentalidad.</li>
+                </ul>
+                <p><span class="emoji">🚀</span> <strong>¿Quieres entrenar como los mejores?</strong> Descubre Go Fitness en 360 aquí: <a href="https://gofitcaf.dondeseria.com/" style="color: var(--primary); text-decoration: none;">https://gofitcaf.dondeseria.com/</a></p>
+            </div>
+            
+            <div class="gym-card">
+                <div class="gym-title">
+                    <span class="medal">🥉</span>
+                    <h4 class="gym-name">AFE GYM <span class="gym-zone">(Zona OESTE)</span></h4>
+                </div>
+                <p><strong>Cancha de baloncesto, spinning VIP, instalaciones de película… y todo en UN lugar.</strong></p>
+                <ul class="gym-features">
+                    <li>El gimnasio más completo de Cali (no le falta NADA).</li>
+                    <li>Atención al cliente de primera (te sentirás como un atleta profesional).</li>
+                    <li>Exclusividad sin pretensiones: Lujo accesible.</li>
+                </ul>
+                <p><span class="emoji">🔥</span> <strong>¿Sueñas con un gimnasio que lo tenga TODO?</strong> AFE Gym te espera, descubre como se ven sus instalaciones sin salir de casa: <a href="https://afegym.dondeseria.com/sede-refugio.html" style="color: var(--primary); text-decoration: none;">https://afegym.dondeseria.com/sede-refugio.html</a></p>
+            </div>
+        </section>
+        
+        <section id="vibra-social" class="content-section">
+            <h2>3. GIMNASIOS CON VIBRA SOCIAL (O SEA, PARA LIGAR) 😏</h2>
+            <p>Admitámoslo: Algunos gimnasios en Cali son Tinder con pesas 💪❤️. Si buscas:</p>
+            <ul>
+                <li>Cafetería fitness (y citas post-entreno).</li>
+                <li>Clases en grupo donde todos se miran en el espejo… y entre ellos.</li>
+                <li>Ambiente de alto voltaje (y no solo por las máquinas).</li>
+            </ul>
+            
+            <div class="gym-card">
+                <div class="gym-title">
+                    <span class="medal">1.</span>
+                    <h4 class="gym-name">POWER HOUSE – Donde el gym se convierte en social club</h4>
+                </div>
+                <p><strong>¿Quieres entrenar… y de paso conocer gente interesante? Power House es el lugar.</strong></p>
+                <ul class="gym-features">
+                    <li>Cafetería healthy (el mejor spot para un smoothie post-entreno… o una cita).</li>
+                    <li>Clases grupales con energía contagiosa (y miradas que dicen más que las repeticiones).</li>
+                    <li>Comunidad fitness-friendly (aquí todos tienen algo en común: les gusta cuidarse).</li>
+                </ul>
+                <p><span class="emoji">🚀</span> <strong>¡NO TE LO IMAGINAS!</strong> Mira el tour 360° y descubre por qué este gimnasio es el favorito para ligar:
+                <br>👉 <a href="https://powerhouse.dondeseria.com/" style="color: var(--primary); text-decoration: none;">Recorrido Virtual Power House</a></p>
+            </div>
+            
+            <div class="gym-card">
+                <div class="gym-title">
+                    <span class="medal">2.</span>
+                    <h4 class="gym-name">WORLD FITNESS – El gimnasio donde el "hola" es el primer ejercicio</h4>
+                </div>
+                <p><strong>Si buscas un lugar donde la gente sí socializa… World Fitness es tu zona de comfort.</strong></p>
+                <ul class="gym-features">
+                    <li>Zonas de entrenamiento abiertas (nada de esquinas oscuras, aquí todos se ven).</li>
+                    <li>Eventos y retos fitness (la excusa perfecta para romper el hielo).</li>
+                    <li>Vibra juvenil y trendy (si te gustan los ambientes instagrameables, esto es para ti).</li>
+                </ul>
+                <p><span class="emoji">🔥</span> <strong>¿CURIOSIDAD?</strong> Recorre las instalaciones y fíjate en el tipo de personas que van:
+                <br>👉 <a href="https://clubdeportivoworldfitness.dondeseria.com/" style="color: var(--primary); text-decoration: none;">Tour 360° World Fitness</a></p>
+            </div>
+            
+            <div class="gym-card">
+                <div class="gym-title">
+                    <span class="medal">3.</span>
+                    <h4 class="gym-name">EL MOLINO – Donde el gym se siente como una fiesta</h4>
+                </div>
+                <p><strong>Este no es un gimnasio… es un lifestyle.</strong></p>
+                <ul class="gym-features">
+                    <li>Música alta, energía al máximo (si te gusta entrenar con adrenalina, aquí amarás el ambiente).</li>
+                    <li>Comunidad extrovertida (olvídate de auriculares… aquí se habla y se entrena).</li>
+                    <li>Espacios diseñados para socializar (después de sudar, llega el momento de conectar).</li>
+                </ul>
+                <p><span class="emoji">💥</span> <strong>¿AÚN NO LO CREES?</strong> Haz el tour virtual y descubre por qué El Molino es el gimnasio más social de Cali:
+                <br>👉 <a href="https://elmolinocaf.dondeseria.com/" style="color: var(--primary); text-decoration: none;">Recorrido 360° El Molino</a></p>
+            </div>
+        </section>
+        
+        <section id="precios" class="content-section">
+            <h2>4. LISTA DE PRECIOS Y UBICACIÓN DE CADA GIMNASIO CONOCIDO DE LA CIUDAD</h2>
+            
+            <table class="price-table">
+                <thead>
+                    <tr>
+                        <th>Gimnasio</th>
+                        <th>Precio (mes)</th>
+                        <th>Ubicación</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Grecos</td>
+                        <td>50.000</td>
+                        <td>NORTE</td>
+                    </tr>
+                    <tr>
+                        <td>Geminis</td>
+                        <td>50.000</td>
+                        <td>OESTE</td>
+                    </tr>
+                    <tr>
+                        <td>RomaGym</td>
+                        <td>54.000</td>
+                        <td>NORTE</td>
+                    </tr>
+                    <tr>
+                        <td>Tauros Autopista</td>
+                        <td>55.000</td>
+                        <td>SUR</td>
+                    </tr>
+                    <tr>
+                        <td>Force Gym</td>
+                        <td>55.000</td>
+                        <td>ORIENTE</td>
+                    </tr>
+                    <tr>
+                        <td>Gladiador CAF</td>
+                        <td>60.000</td>
+                        <td>ORIENTE</td>
+                    </tr>
+                    <tr>
+                        <td>B-Fitness</td>
+                        <td>60.000</td>
+                        <td>NORTE</td>
+                    </tr>
+                    <tr>
+                        <td>ExerGym</td>
+                        <td>60.000</td>
+                        <td>SUR</td>
+                    </tr>
+                    <tr>
+                        <td>Tanos</td>
+                        <td>63.000</td>
+                        <td>NORTE</td>
+                    </tr>
+                    <tr>
+                        <td>Tauros Aries</td>
+                        <td>64.900</td>
+                        <td>ORIENTE</td>
+                    </tr>
+                    <tr>
+                        <td>Tauros Poblado</td>
+                        <td>64.900</td>
+                        <td>ORIENTE</td>
+                    </tr>
+                    <tr>
+                        <td>Tauros Oriente</td>
+                        <td>64.900</td>
+                        <td>ORIENTE</td>
+                    </tr>
+                    <tr>
+                        <td>Megafitness Poblado 1</td>
+                        <td>65.000</td>
+                        <td>ORIENTE</td>
+                    </tr>
+                    <tr>
+                        <td>Megafitness Bonilla Aragon</td>
+                        <td>65.000</td>
+                        <td>ORIENTE</td>
+                    </tr>
+                    <tr>
+                        <td>Megafitness El diamante</td>
+                        <td>68.000</td>
+                        <td>ORIENTE</td>
+                    </tr>
+                    <tr>
+                        <td>Leandro Sede Nueva Floresta</td>
+                        <td>69.900</td>
+                        <td>ORIENTE</td>
+                    </tr>
+                    <tr>
+                        <td>Next Level Gym</td>
+                        <td>70.000</td>
+                        <td>SUR</td>
+                    </tr>
+                    <tr>
+                        <td>Hit Gym</td>
+                        <td>70.000</td>
+                        <td>ORIENTE</td>
+                    </tr>
+                    <tr>
+                        <td>MuelleGYM</td>
+                        <td>70.000</td>
+                        <td>NORTE</td>
+                    </tr>
+                    <tr>
+                        <td>CastroGym</td>
+                        <td>70.000</td>
+                        <td>SUR</td>
+                    </tr>
+                    <tr>
+                        <td>Tauros Yira Castro</td>
+                        <td>72.000</td>
+                        <td>ORIENTE</td>
+                    </tr>
+                    <tr>
+                        <td>Mutant</td>
+                        <td>75.000</td>
+                        <td>SUR</td>
+                    </tr>
+                    <tr>
+                        <td>FitnessZone</td>
+                        <td>75.000</td>
+                        <td>SUR</td>
+                    </tr>
+                    <tr>
+                        <td>Dleo</td>
+                        <td>75.000</td>
+                        <td>SUR</td>
+                    </tr>
+                    <tr>
+                        <td>Marquez</td>
+                        <td>80.000</td>
+                        <td>SUR</td>
+                    </tr>
+                    <tr>
+                        <td>Leandro Sede Poblado</td>
+                        <td>89.900</td>
+                        <td>ORIENTE</td>
+                    </tr>
+                    <tr>
+                        <td>World Fitness</td>
+                        <td>110.000</td>
+                        <td>SUR</td>
+                    </tr>
+                    <tr>
+                        <td>AFE Gym Sede Refugio</td>
+                        <td>117.000</td>
+                        <td>OESTE</td>
+                    </tr>
+                    <tr>
+                        <td>Power House colseguros</td>
+                        <td>120.000</td>
+                        <td>SUR</td>
+                    </tr>
+                    <tr>
+                        <td>Power House cañaveralejo</td>
+                        <td>120.000</td>
+                        <td>SUR</td>
+                    </tr>
+                    <tr>
+                        <td>Imperial Box</td>
+                        <td>120.000</td>
+                        <td>NORTE</td>
+                    </tr>
+                    <tr>
+                        <td>AFE Gym Sede Cristales</td>
+                        <td>125.000</td>
+                        <td>OESTE</td>
+                    </tr>
+                    <tr>
+                        <td>MFC Gym</td>
+                        <td>135.000</td>
+                        <td>SUR</td>
+                    </tr>
+                    <tr>
+                        <td>Go fitness</td>
+                        <td>150.000</td>
+                        <td>SUR</td>
+                    </tr>
+                    <tr>
+                        <td>El Molino</td>
+                        <td>170.000</td>
+                        <td>SUR</td>
+                    </tr>
+                    <tr>
+                        <td>Hypertrophy lab</td>
+                        <td>220.000</td>
+                        <td>SUR</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+        
+        <section id="elegir" class="content-section">
+            <h2>5. ¿CÓMO ELEGIR TU GIMNASIO IDEAL? (SIN LLORAR EN EL INTENTO)</h2>
+            <ol>
+                <li><strong>Ubicación:</strong> Si queda a 2 horas de tu casa, NO.</li>
+                <li><strong>Precio:</strong> Que no te cobren un riñón (a menos que incluya trasplante).</li>
+                <li><strong>Prueba primero:</strong> ¡Por eso existe <a href="https://www.dondeseria.com" style="color: var(--primary); text-decoration: none;">dondeseria.com</a>!</li>
+            </ol>
+            
+            <div class="conclusion">
+                <h3>🎯 CONCLUSIÓN: CALI TIENE GIMNASIOS QUE SON UNA EXPERIENCIA (NO SOLO MÁQUINAS)</h3>
+                <p>Ya sea que busques el más equipado, el más social o el más hardcore, en Cali hay opciones para todos. Y la mejor parte: ¡puedes explorarlos desde tu casa en <a href="https://www.dondeseria.com" style="color: var(--primary); text-decoration: none;">www.dondeseria.com</a>! (Tour 360°, fotos, reseñas y hasta el WhatsApp del gym).</p>
+                <p class="warning">¿Cuál probarás primero? 🔥</p>
+            </div>
+            
+            <p class="note">📍 ¿Quieres más? Sigue a <a href="#" style="color: var(--primary); text-decoration: none;">@dondeseria</a> en IG para descubrir más lugares ¡como si estuvieras ahí! 📲✨</p>
+        </section>
+    </main>
+    
+    <footer>
+        <div class="container">
+            <p>© 2025 CUSIG SAS - Todos los derechos reservados</p>
+            <div class="social-links">
+                <a href="#"><i class="fab fa-instagram"></i></a>
+                <a href="#"><i class="fab fa-facebook"></i></a>
+                <a href="#"><i class="fab fa-youtube"></i></a>
+            </div>
+        </div>
+    </footer>
+    
+    <a href="#" class="back-to-top" id="backToTop">↑</a>
+    
+    <script>
+        // Back to top button
+        const backToTopButton = document.getElementById('backToTop');
+        
+        window.addEventListener('scroll', () => {
+            if (window.pageYOffset > 300) {
+                backToTopButton.classList.add('active');
+            } else {
+                backToTopButton.classList.remove('active');
+            }
+        });
+        
+        backToTopButton.addEventListener('click', (e) => {
+            e.preventDefault();
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+        
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
+    
+    <!-- Font Awesome for icons -->
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+</body>
+</html>
